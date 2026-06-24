@@ -133,7 +133,802 @@
             <a href="#leadership" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">Leadership</a>
             <a href="#contact" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">Contact</a>
             
-            <a href="#login" id="nav-login" class="login-btn nav-link px-8 py-2.5 rounded-full font-bold uppercase tracking-wider text-sm backdrop-blur-sm hover:bg-white hover:text-gray-900 transition-all duration-300">
+            <!-- CHANGED: href is now admin.html -->
+            <a href="admin.html" id="nav-login" class="login-btn nav-link px-8 py-2.5 rounded-full font-bold uppercase tracking-wider text-sm backdrop-blur-sm hover:bg-white hover:text-gray-900 transition-all duration-300">
+                Admin Login
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative w-full h-screen overflow-hidden">
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+            <!-- Replace with your society video -->
+            <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4">
+        </video>
+        
+        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/60"></div>
+        
+        <div class="absolute bottom-24 left-[4%] z-20 text-white max-w-3xl">
+            <h1 class="text-5xl md:text-7xl font-serif font-bold tracking-tight mb-6 drop-shadow-2xl">
+                Building the <br><span class="italic text-amber-500">Future Landscape</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 drop-shadow-lg font-light border-l-4 border-amber-500 pl-6">
+                Welcome to the official portal of CivilEPOCH. Innovating infrastructure, shaping tomorrow.
+            </p>
+        </div>
+    </header>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-32 bg-white relative z-30">
+        <div class="max-w-7xl mx-auto px-8 lg:px-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-slate-500 text-sm font-bold uppercase tracking-widest mb-3">Welcome to our Foundation</h2>
+                    <h3 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-8">About CivilEPOCH</h3>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                        As the premier Civil Engineering society, CivilEPOCH is dedicated to bridging the gap between theoretical knowledge and practical structural execution. We build leaders in construction, architecture, and urban planning.
+                    </p>
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        From surveying workshops to structural design hackathons, our community stands on the pillars of innovation, resilience, and sustainability.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 mt-8">
+                        <a href="members.html" class="px-8 py-3 bg-slate-900 text-white font-bold uppercase tracking-wider text-sm rounded-lg hover:bg-amber-500 hover:text-slate-900 transition-colors shadow-md text-center">Our Members</a>
+                        <a href="alumni.html" class="px-8 py-3 border-2 border-slate-900 text-slate-900 font-bold uppercase tracking-wider text-sm rounded-lg hover:bg-slate-900 hover:text-white transition-colors shadow-sm text-center">Meet Alumni</a>
+                    </div>
+                </div>
+                <div class="relative h-[600px] w-full rounded-tl-[100px] rounded-br-[100px] overflow-hidden shadow-2xl border-4 border-slate-100">
+                     <img src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Civil Engineering Construction" class="absolute inset-0 w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Showcase Section -->
+    <section id="showcase" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-slate-500 text-sm font-bold uppercase tracking-widest mb-3">Our Work in Action</h2>
+                <h3 class="text-4xl md:text-5xl font-serif font-bold text-slate-900">Visual Showcase</h3>
+            </div>
+        </div>
+        
+        <div class="relative w-full overflow-hidden">
+            <div class="absolute left-0 top-0 w-16 md:w-32 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute right-0 top-0 w-16 md:w-32 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+            
+            <div class="scroll-track">
+                <!-- Group 1 -->
+                <div class="flex gap-6 px-3">
+                    <div class="showcase-item cursor-pointer group relative overflow-hidden rounded-2xl shadow-lg w-[300px] h-[300px] md:w-[400px] md:h-[400px] shrink-0 border border-slate-100" data-index="0">
+                        <img src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-bold text-xl">Industrial Site Visit '26</p>
+                        </div>
+                    </div>
+                    <div class="showcase-item cursor-pointer group relative overflow-hidden rounded-2xl shadow-lg w-[300px] h-[300px] md:w-[400px] md:h-[400px] shrink-0 border border-slate-100" data-index="1">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-bold text-xl">AutoCAD Design Marathon</p>
+                        </div>
+                    </div>
+                    <div class="showcase-item cursor-pointer group relative overflow-hidden rounded-2xl shadow-lg w-[300px] h-[300px] md:w-[400px] md:h-[400px] shrink-0 border border-slate-100" data-index="2">
+                        <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-bold text-xl">Geotech Lab Sessions</p>
+                        </div>
+                    </div>
+                    <div class="showcase-item cursor-pointer group relative overflow-hidden rounded-2xl shadow-lg w-[300px] h-[300px] md:w-[400px] md:h-[400px] shrink-0 border border-slate-100" data-index="3">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-bold text-xl">Structural Modeling Display</p>
+                        </div>
+                    </div>
+                    <div class="showcase-item cursor-pointer group relative overflow-hidden rounded-2xl shadow-lg w-[300px] h-[300px] md:w-[400px] md:h-[400px] shrink-0 border border-slate-100" data-index="4">
+                        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-bold text-xl">Site Surveying Camp</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Group 2 (Duplicated for Loop) -->
+                <div class="flex gap-6 px-3">
+                    <div class="showcase-item cursor-pointer group relative overflow-hidden rounded-2xl shadow-lg w-[300px] h-[300px] md:w-[400px] md:h-[400px] shrink-0 border border-slate-100" data-index="0">
+                        <img src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-bold text-xl">Industrial Site Visit '26</p>
+                        </div>
+                    </div>
+                    <div class="showcase-item cursor-pointer group relative overflow-hidden rounded-2xl shadow-lg w-[300px] h-[300px] md:w-[400px] md:h-[400px] shrink-0 border border-slate-100" data-index="1">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-bold text-xl">AutoCAD Design Marathon</p>
+                        </div>
+                    </div>
+                    <div class="showcase-item cursor-pointer group relative overflow-hidden rounded-2xl shadow-lg w-[300px] h-[300px] md:w-[400px] md:h-[400px] shrink-0 border border-slate-100" data-index="2">
+                        <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-bold text-xl">Geotech Lab Sessions</p>
+                        </div>
+                    </div>
+                    <div class="showcase-item cursor-pointer group relative overflow-hidden rounded-2xl shadow-lg w-[300px] h-[300px] md:w-[400px] md:h-[400px] shrink-0 border border-slate-100" data-index="3">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-bold text-xl">Structural Modeling Display</p>
+                        </div>
+                    </div>
+                    <div class="showcase-item cursor-pointer group relative overflow-hidden rounded-2xl shadow-lg w-[300px] h-[300px] md:w-[400px] md:h-[400px] shrink-0 border border-slate-100" data-index="4">
+                        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white font-bold text-xl">Site Surveying Camp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Screen Image Modal (Lightbox) -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center">
+        <!-- Close Button -->
+        <button id="lightbox-close" class="absolute top-6 right-6 md:top-8 md:right-8 text-white hover:text-amber-500 transition-colors z-[110] bg-black/50 p-2 rounded-full backdrop-blur-md">
+            <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <!-- Left Arrow -->
+        <button id="lightbox-prev" class="absolute left-4 md:left-10 text-white hover:text-amber-500 transition-colors z-[110] bg-black/50 p-3 rounded-full backdrop-blur-md">
+            <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+        <!-- Image Display -->
+        <div class="relative w-full h-full flex flex-col items-center justify-center px-16">
+            <img id="lightbox-img" src="" class="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl transition-transform duration-300 transform scale-95" alt="Enlarged Showcase">
+            <p id="lightbox-caption" class="text-white font-serif text-xl md:text-2xl mt-6 tracking-wide drop-shadow-md text-center"></p>
+        </div>
+        <!-- Right Arrow -->
+        <button id="lightbox-next" class="absolute right-4 md:right-10 text-white hover:text-amber-500 transition-colors z-[110] bg-black/50 p-3 rounded-full backdrop-blur-md">
+            <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+    </div>
+
+    <!-- Events Section -->
+    <section id="events" class="py-24 bg-slate-50 relative border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="text-slate-500 text-sm font-bold uppercase tracking-widest mb-3">Mark Your Calendars</h2>
+                    <h3 class="text-4xl md:text-5xl font-serif font-bold text-slate-900">Upcoming Events</h3>
+                </div>
+                <a href="events.html" class="inline-block px-6 py-2.5 border-2 border-slate-900 text-slate-900 font-bold uppercase tracking-wider text-sm rounded-full hover:bg-slate-900 hover:text-white transition-colors text-center">
+                    View All Events
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Event Card 1 -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 flex flex-col md:flex-row group">
+                    <div class="bg-amber-500 text-slate-900 p-6 flex flex-col justify-center items-center md:w-1/3 border-b md:border-b-0 md:border-r border-amber-600/30">
+                        <span class="text-sm font-bold uppercase tracking-widest">JULY</span>
+                        <span class="text-5xl font-serif font-bold">15</span>
+                        <span class="text-sm font-medium mt-1">2026</span>
+                    </div>
+                    <div class="p-8 md:w-2/3 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-2xl font-serif font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition-colors">BIM & Revit Masterclass</h4>
+                            <p class="text-slate-600 text-sm mb-4">Learn advanced structural modeling techniques from industry experts. Limited seats available.</p>
+                            <div class="flex items-center gap-2 text-sm text-slate-500 font-medium mb-6">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                Main Auditorium
+                            </div>
+                        </div>
+                        <button class="w-full bg-slate-900 text-white font-bold uppercase tracking-wider text-sm py-3 rounded-lg hover:bg-amber-500 hover:text-slate-900 transition-colors shadow-md">
+                            Register Now (₹200)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Event Card 2 -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 flex flex-col md:flex-row group">
+                    <div class="bg-slate-900 text-white p-6 flex flex-col justify-center items-center md:w-1/3 border-b md:border-b-0 md:border-r border-slate-800">
+                        <span class="text-sm font-bold uppercase tracking-widest text-amber-500">AUG</span>
+                        <span class="text-5xl font-serif font-bold">02</span>
+                        <span class="text-sm font-medium text-slate-400 mt-1">2026</span>
+                    </div>
+                    <div class="p-8 md:w-2/3 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-2xl font-serif font-bold text-slate-900 mb-2 group-hover:text-amber-600 transition-colors">CONSTRUX: Bridge Design</h4>
+                            <p class="text-slate-600 text-sm mb-4">Annual structural design challenge. Form teams of 4 and build the strongest truss bridge.</p>
+                            <div class="flex items-center gap-2 text-sm text-slate-500 font-medium mb-6">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                Civil Eng. Block
+                            </div>
+                        </div>
+                        <button class="w-full bg-slate-100 text-slate-900 border border-slate-300 font-bold uppercase tracking-wider text-sm py-3 rounded-lg hover:bg-slate-200 transition-colors shadow-sm">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Members of the Month Section -->
+    <section id="members" class="min-h-screen flex flex-col justify-center py-24 bg-slate-900 text-white relative">
+        <div class="w-full max-w-7xl mx-auto px-6 lg:px-12">
+            
+            <div class="text-center mb-10 lg:mb-12">
+                <h2 class="text-amber-500 text-sm font-bold uppercase tracking-widest mb-2 lg:mb-3">Honoring Excellence</h2>
+                <h3 class="text-3xl md:text-5xl font-serif font-bold">Member of the Month</h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+                <!-- Left Main Image -->
+                <div class="lg:col-span-4 relative group overflow-hidden rounded-2xl shadow-2xl border border-slate-700 transition-all duration-500 h-[400px] lg:h-[480px]">
+                    <img id="featured-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Featured Member" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105">
+                    
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/90 to-transparent p-6 pt-32">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span id="featured-award-month" class="inline-block px-3 py-1 bg-amber-500 text-black text-xs font-bold uppercase tracking-wider rounded-sm shadow-md">June 2026</span>
+                            <span id="featured-year" class="inline-block px-3 py-1 bg-slate-700/80 backdrop-blur-sm text-white text-xs font-bold uppercase tracking-wider rounded-sm">4th Year</span>
+                        </div>
+                        <h4 id="featured-name" class="text-3xl font-serif font-bold text-white mb-1">Rohan Sharma</h4>
+                        <p id="featured-post" class="text-base text-slate-300 font-light">Lead Structural Coordinator</p>
+                    </div>
+                </div>
+
+                <!-- Right Thumbnails -->
+                <div class="lg:col-span-8 flex flex-col justify-between h-auto lg:min-h-[480px]">
+                    <div>
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end border-b border-slate-700 pb-3 mb-5 gap-4">
+                            <h4 class="text-xl md:text-2xl font-serif font-bold">Previous Honorees</h4>
+                            <!-- Year Filter -->
+                            <select id="year-filter" class="bg-slate-800 text-slate-300 border border-slate-600 rounded px-3 py-1 text-sm focus:outline-none focus:border-amber-500 cursor-pointer font-medium tracking-wide">
+                                <option value="all">All Years</option>
+                                <option value="2026">2026</option>
+                                <option value="2025">2025</option>
+                            </select>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4" id="thumbnail-grid">
+                            <!-- Thumb 1 -->
+                            <div class="member-thumb cursor-pointer group relative overflow-hidden rounded-xl border border-slate-700" 
+                                 data-name="Aditi Verma" data-post="Design Head" data-year="3rd Year" data-month="May 2026" data-award-year="2026"
+                                 data-img="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                                <div class="absolute top-2 left-2 bg-amber-500 text-black text-[10px] font-bold px-2 py-0.5 rounded-sm z-10 shadow">May '26</div>
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full aspect-[3/4] object-cover object-top group-hover:opacity-60 transition-opacity duration-300">
+                                <div class="absolute bottom-0 w-full bg-gradient-to-t from-black via-black/90 to-transparent p-3 pt-12">
+                                    <p class="text-sm font-bold truncate">Aditi Verma</p>
+                                    <p class="text-xs text-amber-500 truncate">Design Head</p>
+                                </div>
+                            </div>
+
+                            <!-- Thumb 2 -->
+                            <div class="member-thumb cursor-pointer group relative overflow-hidden rounded-xl border border-slate-700" 
+                                 data-name="Karan Patel" data-post="Project Manager" data-year="4th Year" data-month="April 2026" data-award-year="2026"
+                                 data-img="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                                <div class="absolute top-2 left-2 bg-amber-500 text-black text-[10px] font-bold px-2 py-0.5 rounded-sm z-10 shadow">Apr '26</div>
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full aspect-[3/4] object-cover object-top group-hover:opacity-60 transition-opacity duration-300">
+                                <div class="absolute bottom-0 w-full bg-gradient-to-t from-black via-black/90 to-transparent p-3 pt-12">
+                                    <p class="text-sm font-bold truncate">Karan Patel</p>
+                                    <p class="text-xs text-amber-500 truncate">Project Mgr.</p>
+                                </div>
+                            </div>
+
+                            <!-- Thumb 3 -->
+                            <div class="member-thumb cursor-pointer group relative overflow-hidden rounded-xl border border-slate-700" 
+                                 data-name="Priya Singh" data-post="Survey Lead" data-year="2nd Year" data-month="March 2026" data-award-year="2026"
+                                 data-img="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                                <div class="absolute top-2 left-2 bg-amber-500 text-black text-[10px] font-bold px-2 py-0.5 rounded-sm z-10 shadow">Mar '26</div>
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full aspect-[3/4] object-cover object-top group-hover:opacity-60 transition-opacity duration-300">
+                                <div class="absolute bottom-0 w-full bg-gradient-to-t from-black via-black/90 to-transparent p-3 pt-12">
+                                    <p class="text-sm font-bold truncate">Priya Singh</p>
+                                    <p class="text-xs text-amber-500 truncate">Survey Lead</p>
+                                </div>
+                            </div>
+
+                             <!-- Thumb 4 -->
+                            <div class="member-thumb cursor-pointer group relative overflow-hidden rounded-xl border border-slate-700" 
+                                 data-name="Vikram Rao" data-post="Tech Secretary" data-year="3rd Year" data-month="February 2026" data-award-year="2026"
+                                 data-img="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80">
+                                <div class="absolute top-2 left-2 bg-amber-500 text-black text-[10px] font-bold px-2 py-0.5 rounded-sm z-10 shadow">Feb '26</div>
+                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full aspect-[3/4] object-cover object-top group-hover:opacity-60 transition-opacity duration-300">
+                                <div class="absolute bottom-0 w-full bg-gradient-to-t from-black via-black/90 to-transparent p-3 pt-12">
+                                    <p class="text-sm font-bold truncate">Vikram Rao</p>
+                                    <p class="text-xs text-amber-500 truncate">Tech Sec.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="honorees.html" class="mt-8 lg:mt-0 w-full py-3 border border-slate-600 hover:border-amber-500 rounded-lg text-sm text-slate-300 hover:text-white hover:bg-slate-800 transition-all duration-300 uppercase tracking-widest font-bold block text-center">
+                        View All Honorees
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Alumni Section -->
+    <section id="alumni" class="py-24 bg-white relative border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+            <h2 class="text-slate-500 text-sm font-bold uppercase tracking-widest mb-3">Legacy of Excellence</h2>
+            <h3 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-16">Meet Our Alumni</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+                <div class="flex flex-col items-center">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Alumni" class="w-40 h-40 rounded-full object-cover shadow-xl border-4 border-slate-50 mb-6">
+                    <h4 class="text-xl font-bold text-slate-900">Arjun Mehta</h4>
+                    <p class="text-amber-600 text-sm font-bold uppercase tracking-wider mb-2">Class of 2022</p>
+                    <p class="text-slate-600 text-sm">Structural Engineer, L&T</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Alumni" class="w-40 h-40 rounded-full object-cover shadow-xl border-4 border-slate-50 mb-6">
+                    <h4 class="text-xl font-bold text-slate-900">Sneha Kapoor</h4>
+                    <p class="text-amber-600 text-sm font-bold uppercase tracking-wider mb-2">Class of 2023</p>
+                    <p class="text-slate-600 text-sm">BIM Coordinator, Tata Projects</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Alumni" class="w-40 h-40 rounded-full object-cover shadow-xl border-4 border-slate-50 mb-6">
+                    <h4 class="text-xl font-bold text-slate-900">Rajiv Singh</h4>
+                    <p class="text-amber-600 text-sm font-bold uppercase tracking-wider mb-2">Class of 2020</p>
+                    <p class="text-slate-600 text-sm">Project Manager, DLF India</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Alumni" class="w-40 h-40 rounded-full object-cover shadow-xl border-4 border-slate-50 mb-6">
+                    <h4 class="text-xl font-bold text-slate-900">Ananya Das</h4>
+                    <p class="text-amber-600 text-sm font-bold uppercase tracking-wider mb-2">Class of 2024</p>
+                    <p class="text-slate-600 text-sm">Urban Planner, Govt. of Bihar</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 md:mt-16">
+                <a href="alumni.html" class="inline-block px-8 py-3 bg-slate-900 text-white font-bold uppercase tracking-wider text-sm rounded-lg hover:bg-amber-500 hover:text-slate-900 transition-colors shadow-md text-center">
+                    View All Alumni
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- From Our Leaders Section -->
+    <section id="leadership" class="py-24 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-amber-500 text-sm font-bold uppercase tracking-widest mb-3">Guiding Principles</h2>
+                <h3 class="text-4xl md:text-5xl font-serif font-bold text-white">From Our Leaders</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                <!-- 1. HOD -->
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 flex flex-col items-center text-center hover:border-amber-500/50 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="w-32 h-32 mb-4 rounded-full overflow-hidden border-4 border-slate-700 group-hover:border-amber-500 transition-colors duration-300 shadow-xl shrink-0">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="HOD" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-1">Dr. S. K. Verma</h4>
+                    <p class="text-amber-500 text-[11px] font-bold uppercase tracking-wider mb-4 px-3 py-1 bg-amber-500/10 rounded-full">Head of Department (HOD)</p>
+                    <svg class="w-5 h-5 text-slate-600 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    <p class="text-sm text-slate-300 font-serif italic leading-relaxed">
+                        "CivilEPOCH is more than a society; it is a proving ground. We ensure our students don't just memorize formulas, but learn how to physically shape the skylines of tomorrow."
+                    </p>
+                </div>
+
+                <!-- 2. Faculty Coordinator -->
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 flex flex-col items-center text-center hover:border-amber-500/50 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="w-32 h-32 mb-4 rounded-full overflow-hidden border-4 border-slate-700 group-hover:border-amber-500 transition-colors duration-300 shadow-xl shrink-0">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Faculty Coordinator" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-1">Dr. Anita Desai</h4>
+                    <p class="text-amber-500 text-[11px] font-bold uppercase tracking-wider mb-4 px-3 py-1 bg-amber-500/10 rounded-full">Faculty Coordinator</p>
+                    <svg class="w-5 h-5 text-slate-600 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    <p class="text-sm text-slate-300 font-serif italic leading-relaxed">
+                        "Bridging the gap between the classroom and the construction site. My role is to empower our students with industry-standard skills and practical field exposure."
+                    </p>
+                </div>
+
+                <!-- 3. Founder -->
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 flex flex-col items-center text-center hover:border-amber-500/50 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="w-32 h-32 mb-4 rounded-full overflow-hidden border-4 border-slate-700 group-hover:border-amber-500 transition-colors duration-300 shadow-xl shrink-0">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Founder" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-1">Alok Singhania</h4>
+                    <p class="text-amber-500 text-[11px] font-bold uppercase tracking-wider mb-4 px-3 py-1 bg-amber-500/10 rounded-full">Founder</p>
+                    <svg class="w-5 h-5 text-slate-600 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    <p class="text-sm text-slate-300 font-serif italic leading-relaxed">
+                        "When we laid the foundation of this society, the vision was simple: to create an ecosystem where structural imagination meets practical, real-world execution."
+                    </p>
+                </div>
+
+                <!-- 4. President -->
+                <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 flex flex-col items-center text-center hover:border-amber-500/50 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="w-32 h-32 mb-4 rounded-full overflow-hidden border-4 border-slate-700 group-hover:border-amber-500 transition-colors duration-300 shadow-xl shrink-0">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="President" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-1">Aisha Rahman</h4>
+                    <p class="text-amber-500 text-[11px] font-bold uppercase tracking-wider mb-4 px-3 py-1 bg-amber-500/10 rounded-full">President</p>
+                    <svg class="w-5 h-5 text-slate-600 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    <p class="text-sm text-slate-300 font-serif italic leading-relaxed">
+                        "Our goal this year is to bridge the gap between academic theory and modern industry standards like BIM and sustainable architecture. We are building the future."
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-slate-500 text-sm font-bold uppercase tracking-widest mb-3">Get in Touch</h2>
+                <h3 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-8">Let's Build Together</h3>
+                <p class="text-slate-600 mb-10 text-lg">Whether you are an industry professional looking to host a seminar, or a student wanting to join our ranks, we'd love to hear from you.</p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-900 shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Our Location</h4>
+                            <p class="text-slate-600">Department of Civil Engineering,<br>Patna, Bihar 800005, India</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-900 shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Email Us</h4>
+                            <p class="text-slate-600">contact@civilepoch.in</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 p-8 md:p-10 rounded-2xl shadow-lg border border-slate-200">
+                <form class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Full Name</label>
+                        <input type="text" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition-all" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Email Address</label>
+                        <input type="email" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition-all" placeholder="john@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Message</label>
+                        <textarea rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition-all" placeholder="How can we help you?"></textarea>
+                    </div>
+                    <button type="button" class="w-full bg-slate-900 text-white font-bold uppercase tracking-wider py-4 rounded-lg hover:bg-amber-500 hover:text-slate-900 transition-colors shadow-md">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t border-slate-800 text-center">
+        <p class="text-slate-400 text-sm tracking-wide">
+            &copy; 2026 CivilEPOCH Society. All Rights Reserved. | Designed with ❤️ in Patna, Bihar.
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // 1. Navbar Scroll Shrink Logic
+        const navbar = document.getElementById('navbar');
+        const navLogo = document.getElementById('nav-logo');
+        const navTitle = document.getElementById('nav-title');
+        const navSubtitle = document.getElementById('nav-subtitle');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const navLogin = document.getElementById('nav-login');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled-nav');
+                navLogo.classList.add('scrolled-logo');
+                navTitle.classList.add('scrolled-title');
+                navSubtitle.classList.add('opacity-0', 'hidden');
+                navLinks.forEach(link => {
+                    if (link.id !== 'nav-login') link.classList.add('scrolled-link');
+                });
+                navLogin.classList.add('scrolled-login-btn');
+                navLogin.classList.remove('hover:bg-white', 'hover:text-gray-900', 'text-shadow');
+            } else {
+                navbar.classList.remove('scrolled-nav');
+                navLogo.classList.remove('scrolled-logo');
+                navTitle.classList.remove('scrolled-title');
+                navSubtitle.classList.remove('opacity-0', 'hidden');
+                navLinks.forEach(link => {
+                    if (link.id !== 'nav-login') link.classList.remove('scrolled-link');
+                });
+                navLogin.classList.remove('scrolled-login-btn');
+                navLogin.classList.add('hover:bg-white', 'hover:text-gray-900');
+            }
+        });
+
+        // 2. Member of the Month Logic (Click to view, auto-revert, year filter)
+        const memberThumbs = document.querySelectorAll('.member-thumb');
+        const featuredImg = document.getElementById('featured-img');
+        const featuredName = document.getElementById('featured-name');
+        const featuredPost = document.getElementById('featured-post');
+        const featuredYear = document.getElementById('featured-year');
+        const featuredAwardMonth = document.getElementById('featured-award-month');
+
+        const defaultFeatured = {
+            img: featuredImg.src,
+            name: featuredName.textContent,
+            post: featuredPost.textContent,
+            year: featuredYear.textContent,
+            month: featuredAwardMonth.textContent
+        };
+        let revertTimer = null;
+
+        featuredImg.style.transition = "opacity 0.3s ease-in-out";
+
+        memberThumbs.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                if (revertTimer) clearTimeout(revertTimer);
+
+                const newImg = this.getAttribute('data-img');
+                const newName = this.getAttribute('data-name');
+                const newPost = this.getAttribute('data-post');
+                const newYear = this.getAttribute('data-year');
+                const newMonth = this.getAttribute('data-month');
+
+                featuredImg.style.opacity = 0;
+                
+                setTimeout(() => {
+                    featuredImg.src = newImg;
+                    featuredName.textContent = newName;
+                    featuredPost.textContent = newPost;
+                    featuredYear.textContent = newYear;
+                    featuredAwardMonth.textContent = newMonth;
+                    
+                    featuredImg.style.opacity = 1;
+                }, 300); 
+
+                // 8-second auto revert
+                revertTimer = setTimeout(() => {
+                    featuredImg.style.opacity = 0;
+                    setTimeout(() => {
+                        featuredImg.src = defaultFeatured.img;
+                        featuredName.textContent = defaultFeatured.name;
+                        featuredPost.textContent = defaultFeatured.post;
+                        featuredYear.textContent = defaultFeatured.year;
+                        featuredAwardMonth.textContent = defaultFeatured.month;
+                        featuredImg.style.opacity = 1;
+                    }, 300);
+                }, 8000);
+            });
+        });
+
+        const yearFilter = document.getElementById('year-filter');
+
+        yearFilter.addEventListener('change', function() {
+            const selectedYear = this.value;
+            
+            memberThumbs.forEach(thumb => {
+                const thumbYear = thumb.getAttribute('data-award-year');
+                
+                if (selectedYear === 'all') {
+                    thumb.classList.remove('hidden');
+                } else if (thumbYear === selectedYear) {
+                    thumb.classList.remove('hidden');
+                } else {
+                    thumb.classList.add('hidden');
+                }
+            });
+        });
+
+        // 3. Visual Showcase Lightbox Logic
+        const showcaseData = [
+            { src: 'https://images.unsplash.com/photo-1541888086425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80', title: "Industrial Site Visit '26" },
+            { src: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80', title: "AutoCAD Design Marathon" },
+            { src: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80', title: "Geotech Lab Sessions" },
+            { src: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80', title: "Structural Modeling Display" },
+            { src: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80', title: "Site Surveying Camp" }
+        ];
+
+        let currentLightboxIndex = 0;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+
+        document.querySelectorAll('.showcase-item').forEach(item => {
+            item.addEventListener('click', function() {
+                currentLightboxIndex = parseInt(this.getAttribute('data-index'));
+                updateLightbox();
+                lightbox.classList.remove('hidden');
+                setTimeout(() => {
+                    lightbox.classList.remove('opacity-0');
+                    lightboxImg.classList.remove('scale-95');
+                    lightboxImg.classList.add('scale-100');
+                }, 10);
+            });
+        });
+
+        function updateLightbox() {
+            const data = showcaseData[currentLightboxIndex];
+            lightboxImg.src = data.src;
+            lightboxCaption.textContent = data.title;
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0');
+            lightboxImg.classList.remove('scale-100');
+            lightboxImg.classList.add('scale-95');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+            }, 300); 
+        }
+
+        document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+        
+        document.getElementById('lightbox-prev').addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            currentLightboxIndex = (currentLightboxIndex - 1 + showcaseData.length) % showcaseData.length;
+            updateLightbox();
+        });
+
+        document.getElementById('lightbox-next').addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            currentLightboxIndex = (currentLightboxIndex + 1) % showcaseData.length;
+            updateLightbox();
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target.parentElement === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') document.getElementById('lightbox-prev').click();
+                if (e.key === 'ArrowRight') document.getElementById('lightbox-next').click();
+            }
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CivilEPOCH - Premium Society Portal</title>
+    
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Premium Fonts: Playfair Display and Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar & Logo Scroll Transition */
+        #navbar {
+            padding: 2.5rem 4%; 
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #nav-logo {
+            width: 140px; 
+            height: 140px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #nav-title {
+            font-size: 2.25rem; 
+            color: #ffffff;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link {
+            color: #ffffff;
+            transition: all 0.3s ease;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5); 
+        }
+
+        /* Scrolled State Classes */
+        .scrolled-nav {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            padding: 0.5rem 4% !important; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .scrolled-logo {
+            width: 60px !important; 
+            height: 60px !important;
+        }
+
+        .scrolled-title {
+            font-size: 1.5rem !important; 
+            color: #1e3a8a !important; 
+            text-shadow: none !important;
+        }
+
+        .scrolled-link {
+            color: #374151 !important; 
+            text-shadow: none !important;
+        }
+
+        .scrolled-link:hover {
+            color: #1e3a8a !important;
+        }
+
+        .login-btn {
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .scrolled-login-btn {
+            border: 2px solid #1e3a8a !important;
+            color: #1e3a8a !important;
+        }
+        
+        .scrolled-login-btn:hover {
+            background-color: #1e3a8a !important;
+            color: white !important;
+        }
+
+        /* Showcase Infinite Scroll Animation */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .scroll-track {
+            display: flex;
+            width: max-content;
+            animation: scroll 35s linear infinite;
+        }
+        .scroll-track:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 flex items-center justify-between">
+        
+        <div class="flex items-center gap-6 cursor-pointer" onclick="window.scrollTo(0,0)">
+            <img id="nav-logo" class="object-cover rounded-full shadow-2xl border-2 border-white/20" src="https://placehold.co/400x400/1e3a8a/ffffff?text=Crest" alt="Society Crest">
+            
+            <div class="flex flex-col">
+                <span id="nav-title" class="font-serif font-bold tracking-wide drop-shadow-lg">CivilEPOCH</span>
+                <span id="nav-subtitle" class="text-white/80 text-sm tracking-widest uppercase font-medium transition-opacity duration-300">Department of Civil Engineering</span>
+            </div>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-8">
+            <a href="#about" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">About Us</a>
+            <a href="#showcase" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">Showcase</a>
+            <a href="#events" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">Events</a>
+            <a href="members.html" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">Members</a>
+            <a href="alumni.html" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">Alumni</a>
+            <a href="#leadership" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">Leadership</a>
+            <a href="#contact" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">Contact</a>
+            
+            <!-- CHANGED: href is now admin.html -->
+            <a href="admin.html" id="nav-login" class="login-btn nav-link px-8 py-2.5 rounded-full font-bold uppercase tracking-wider text-sm backdrop-blur-sm hover:bg-white hover:text-gray-900 transition-all duration-300">
                 Admin Login
             </a>
         </div>
