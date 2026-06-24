@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Alumni | CivilEPOCH</title>
+    
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #f8fafc; /* slate-50 */
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar Smooth Transitions (Hardware Accelerated) */
+        #navbar {
+            padding: 2.5rem 4%;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateZ(0); 
+            will-change: padding, background-color;
+        }
+
+        #nav-logo {
+            width: 140px;
+            height: 140px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateZ(0);
+            will-change: width, height;
+        }
+
+        #nav-title {
+            font-size: 2.25rem;
+            color: #ffffff;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link {
+            color: #ffffff;
+            transition: all 0.3s ease;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Scrolled State Styles */
+        .scrolled-nav {
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            padding: 0.5rem 4% !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .scrolled-logo {
+            width: 60px !important;
+            height: 60px !important;
+        }
+
+        .scrolled-title {
+            font-size: 1.5rem !important;
+            color: #1e3a8a !important;
+            text-shadow: none !important;
+        }
+
+        .scrolled-link {
+            color: #374151 !important;
+            text-shadow: none !important;
+        }
+
+        .scrolled-link:hover {
+            color: #1e3a8a !important;
+        }
+
+        .login-btn {
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .scrolled-login-btn {
+            border: 2px solid #1e3a8a !important;
+            color: #1e3a8a !important;
+        }
+        
+        .scrolled-login-btn:hover {
+            background-color: #1e3a8a !important;
+            color: white !important;
+        }
+
+        /* Custom animation for filter transitions */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar: Fixed at the very top -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 flex items-center justify-between">
+        
+        <!-- Left Side: Logo and Society Name -->
+        <a href="index.html" class="flex items-center gap-6 cursor-pointer hover:opacity-90 transition-opacity">
+            <img id="nav-logo" class="object-cover rounded-full shadow-2xl border-2 border-white/20" src="https://placehold.co/400x400/1e3a8a/ffffff?text=Crest" alt="Society Crest">
+            <div class="flex flex-col">
+                <span id="nav-title" class="font-serif font-bold tracking-wide drop-shadow-lg">CivilEPOCH</span>
+                <span id="nav-subtitle" class="text-white/80 text-sm tracking-widest uppercase font-medium transition-opacity duration-300">Department of Civil Engineering</span>
+            </div>
+        </a>
+
+        <!-- Right Side: Navigation Links & Actions -->
+        <div class="hidden lg:flex items-center gap-8">
+            <a href="index.html#about" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">About Us</a>
+            <a href="index.html#events" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">Events</a>
+            <a href="members.html" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">Members</a>
+            <!-- Highlighted Alumni Link -->
+            <a href="alumni.html" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform border-b-2 border-amber-500 pb-1">Alumni</a>
+            <a href="index.html#contact" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">Contact Us</a>
+            
+            <a href="index.html#login" id="nav-login" class="login-btn nav-link px-8 py-2.5 rounded-full font-bold uppercase tracking-wider text-sm backdrop-blur-sm hover:bg-white hover:text-gray-900 transition-all duration-300">
+                Admin Login
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Sub-page format: Shorter height) -->
+    <header class="relative w-full h-[55vh] min-h-[400px] overflow-hidden flex items-center justify-center">
+        <!-- Background Image -->
+        <div class="absolute inset-0 bg-slate-900 z-0">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Alumni Background" class="w-full h-full object-cover opacity-30">
+        </div>
+        
+        <!-- Dark Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-50 via-slate-900/60 to-slate-900/80 z-10"></div>
+        
+        <!-- Hero Content -->
+        <div class="relative z-20 text-center px-4 mt-20">
+            <span class="inline-block py-1 px-4 border border-amber-500/50 bg-amber-500/10 text-amber-400 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                Our Legacy
+            </span>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white tracking-tight mb-4 drop-shadow-2xl">
+                Alumni Network
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 font-light max-w-2xl mx-auto">
+                Celebrating the trailblazers who built our foundation and are now shaping skylines across the globe.
+            </p>
+        </div>
+    </header>
+
+    <!-- Filter Section (Sticky) -->
+    <section class="sticky top-[80px] z-40 bg-slate-50/90 backdrop-blur-md border-b border-slate-200 py-4 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex flex-wrap justify-center gap-3" id="filter-container">
+                <button class="filter-btn active bg-slate-900 text-white border border-slate-900 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all" data-filter="all">All Alumni</button>
+                <button class="filter-btn bg-white text-slate-600 border border-slate-300 hover:border-slate-500 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all" data-filter="2025">Class of 2025</button>
+                <button class="filter-btn bg-white text-slate-600 border border-slate-300 hover:border-slate-500 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all" data-filter="2024">Class of 2024</button>
+                <button class="filter-btn bg-white text-slate-600 border border-slate-300 hover:border-slate-500 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all" data-filter="2023">Class of 2023</button>
+                <button class="filter-btn bg-white text-slate-600 border border-slate-300 hover:border-slate-500 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all" data-filter="legacy">Legacy (Pre-2023)</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alumni Directory -->
+    <main class="py-16 max-w-7xl mx-auto px-6 lg:px-12 min-h-screen relative z-10">
+        
+        <!-- Class of 2025 Section -->
+        <div class="hierarchy-section mb-20" data-session-group="2025">
+            <div class="flex items-center gap-4 mb-10 border-b-2 border-slate-200 pb-3">
+                <h2 class="text-3xl font-serif font-bold text-slate-900">Class of 2025</h2>
+                <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">Recent Grads</span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Alumni Card -->
+                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2025">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '21-'25</div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Sneha Kapoor</h3>
+                        <p class="text-sm text-slate-500 mb-4 font-medium">BIM Coordinator</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-amber-600 font-bold text-sm tracking-wide">Tata Projects</span>
+                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alumni Card -->
+                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2025">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '21-'25</div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Arjun Mehta</h3>
+                        <p class="text-sm text-slate-500 mb-4 font-medium">Graduate Engineer Trainee</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-amber-600 font-bold text-sm tracking-wide">L&T Construction</span>
+                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alumni Card -->
+                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2025">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '21-'25</div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Ananya Das</h3>
+                        <p class="text-sm text-slate-500 mb-4 font-medium">Urban Planner</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-amber-600 font-bold text-sm tracking-wide">Govt. of Bihar</span>
+                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Alumni Card -->
+                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2025">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '21-'25</div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Rahul Verma</h3>
+                        <p class="text-sm text-slate-500 mb-4 font-medium">Site Engineer</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-amber-600 font-bold text-sm tracking-wide">Shapoorji Pallonji</span>
+                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Class of 2024 Section -->
+        <div class="hierarchy-section mb-20" data-session-group="2024">
+            <div class="flex items-center gap-4 mb-10 border-b-2 border-slate-200 pb-3">
+                <h2 class="text-3xl font-serif font-bold text-slate-900">Class of 2024</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Alumni Card -->
+                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2024">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '20-'24</div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Rohan Sharma</h3>
+                        <p class="text-sm text-slate-500 mb-4 font-medium">Structural Designer</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-amber-600 font-bold text-sm tracking-wide">Arup Group</span>
+                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alumni Card -->
+                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2024">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '20-'24</div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Aditi Singh</h3>
+                        <p class="text-sm text-slate-500 mb-4 font-medium">Project Engineer</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-amber-600 font-bold text-sm tracking-wide">JMC Projects</span>
+                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alumni Card -->
+                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2024">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '20-'24</div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Vikram Rao</h3>
+                        <p class="text-sm text-slate-500 mb-4 font-medium">M.Tech Scholar</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-amber-600 font-bold text-sm tracking-wide">IIT Delhi</span>
+                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alumni Card -->
+                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2024">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '20-'24</div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Priya Desai</h3>
+                        <p class="text-sm text-slate-500 mb-4 font-medium">Geotech Consultant</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-amber-600 font-bold text-sm tracking-wide">AECOM</span>
+                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Class of 2023 Section -->
+        <div class="hierarchy-section mb-20" data-session-group="2023">
+            <div class="flex items-center gap-4 mb-10 border-b-2 border-slate-200 pb-3">
+                <h2 class="text-3xl font-serif font-bold text-slate-900">Class of 2023</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Alumni Card -->
+                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2023">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '19-'23</div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Neeraj Kumar</h3>
+                        <p class="text-sm text-slate-500 mb-4 font-medium">Assistant Manager</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-amber-600 font-bold text-sm tracking-wide">DLF India</span>
+                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alumni Card -->
+                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2023">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1bfa82?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '19-'23</div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Megha Sen</h3>
+                        <p class="text-sm text-slate-500 mb-4 font-medium">Design Engineer</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-amber-600 font-bold text-sm tracking-wide">WSP Global</span>
+                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legacy Section (Pre-2023) -->
+        <div class="hierarchy-section mb-16" data-session-group="legacy">
+            <div class="flex items-center gap-4 mb-10 border-b-2 border-slate-200 pb-3">
+                <h2 class="text-3xl font-serif font-bold text-slate-900">Legacy Network</h2>
+                <span class="bg-slate-200 text-slate-600 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">Pre-2023</span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Alumni Card -->
+                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="legacy">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-slate-900/90 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '18-'22</div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Rajiv Singh</h3>
+                        <p class="text-sm text-slate-500 mb-4 font-medium">Senior Project Manager</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-amber-600 font-bold text-sm tracking-wide">Afcons Infra</span>
+                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alumni Card -->
+                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="legacy">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-slate-900/90 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '17-'21</div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Sara Ali</h3>
+                        <p class="text-sm text-slate-500 mb-4 font-medium">Founder & Principal Arch.</p>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-amber-600 font-bold text-sm tracking-wide">Studio DesignX</span>
+                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Empty State Message -->
+        <div id="empty-state" class="hidden text-center py-20">
+            <svg class="w-16 h-16 text-slate-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            <h3 class="text-xl font-serif font-bold text-slate-500">No alumni records found for this class year.</h3>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t border-slate-800 text-center relative z-50">
+        <p class="text-slate-400 text-sm tracking-wide">
+            &copy; 2026 CivilEPOCH Society. All Rights Reserved. | Designed with ❤️ in Patna, Bihar.
+        </p>
+    </footer>
+
+    <!-- Javascript for Nav Scroll and Filtering -->
+    <script>
+        // 1. Navigation Scroll Magic 
+        const navbar = document.getElementById('navbar');
+        const navLogo = document.getElementById('nav-logo');
+        const navTitle = document.getElementById('nav-title');
+        const navSubtitle = document.getElementById('nav-subtitle');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const navLogin = document.getElementById('nav-login');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled-nav');
+                navLogo.classList.add('scrolled-logo');
+                navTitle.classList.add('scrolled-title');
+                navSubtitle.classList.add('opacity-0', 'hidden');
+                
+                navLinks.forEach(link => {
+                    if (link.id !== 'nav-login') {
+                        link.classList.add('scrolled-link');
+                    }
+                });
+
+                navLogin.classList.add('scrolled-login-btn');
+                navLogin.classList.remove('hover:bg-white', 'hover:text-gray-900');
+            } else {
+                navbar.classList.remove('scrolled-nav');
+                navLogo.classList.remove('scrolled-logo');
+                navTitle.classList.remove('scrolled-title');
+                navSubtitle.classList.remove('opacity-0', 'hidden');
+                
+                navLinks.forEach(link => {
+                    if (link.id !== 'nav-login') {
+                        link.classList.remove('scrolled-link');
+                    }
+                });
+
+                navLogin.classList.remove('scrolled-login-btn');
+                navLogin.classList.add('hover:bg-white', 'hover:text-gray-900');
+            }
+        });
+
+        // 2. Session Filtering Logic & Smooth Scrolling
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const alumniCards = document.querySelectorAll('.alumni-card');
+        const hierarchySections = document.querySelectorAll('.hierarchy-section');
+        const emptyState = document.getElementById('empty-state');
+        const mainContainer = document.querySelector('main');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-slate-900', 'text-white', 'active');
+                    b.classList.add('bg-white', 'text-slate-600');
+                });
+                
+                // Add active class to clicked
+                btn.classList.remove('bg-white', 'text-slate-600');
+                btn.classList.add('bg-slate-900', 'text-white', 'active');
+
+                const filterValue = btn.getAttribute('data-filter');
+                let totalVisible = 0;
+
+                // Filter cards
+                alumniCards.forEach(card => {
+                    // Reset animation
+                    card.classList.remove('animate-fade-in');
+                    
+                    if (filterValue === 'all' || card.getAttribute('data-session') === filterValue) {
+                        card.style.display = '';
+                        // Trigger reflow to restart animation
+                        void card.offsetWidth; 
+                        card.classList.add('animate-fade-in');
+                        totalVisible++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Hide empty hierarchy sections
+                hierarchySections.forEach(section => {
+                    // Check if this specific section group matches the filter, OR if filter is "all"
+                    const sectionGroup = section.getAttribute('data-session-group');
+                    
+                    if (filterValue === 'all' || sectionGroup === filterValue) {
+                        section.style.display = '';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+
+                // Show empty state message if no members match at all
+                if (totalVisible === 0) {
+                    emptyState.classList.remove('hidden');
+                } else {
+                    emptyState.classList.add('hidden');
+                }
+
+                // Smoothly scroll to the top of the main directory section accurately
+                const headerOffset = 160; // Approximate height of the fixed navbar + sticky filter bar combined
+                const elementPosition = mainContainer.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
