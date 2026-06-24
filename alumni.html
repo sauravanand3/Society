@@ -3,26 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Alumni | CivilEPOCH</title>
+    <title>Events | CivilEPOCH</title>
     
-    <!-- Load Tailwind CSS via CDN -->
+    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Load Premium Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
             background-color: #f8fafc; /* slate-50 */
         }
 
@@ -30,533 +23,550 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Navbar Smooth Transitions (Hardware Accelerated) */
-        #navbar {
-            padding: 2.5rem 4%;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateZ(0); 
-            will-change: padding, background-color;
+        /* Modal transitions */
+        .modal-enter {
+            opacity: 0;
+            transform: scale(0.95);
         }
-
-        #nav-logo {
-            width: 140px;
-            height: 140px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateZ(0);
-            will-change: width, height;
-        }
-
-        #nav-title {
-            font-size: 2.25rem;
-            color: #ffffff;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-link {
-            color: #ffffff;
-            transition: all 0.3s ease;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
-
-        /* Scrolled State Styles */
-        .scrolled-nav {
-            background-color: rgba(255, 255, 255, 0.98) !important;
-            padding: 0.5rem 4% !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .scrolled-logo {
-            width: 60px !important;
-            height: 60px !important;
-        }
-
-        .scrolled-title {
-            font-size: 1.5rem !important;
-            color: #1e3a8a !important;
-            text-shadow: none !important;
-        }
-
-        .scrolled-link {
-            color: #374151 !important;
-            text-shadow: none !important;
-        }
-
-        .scrolled-link:hover {
-            color: #1e3a8a !important;
-        }
-
-        .login-btn {
-            border: 2px solid white;
-            color: white;
+        .modal-enter-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .scrolled-login-btn {
-            border: 2px solid #1e3a8a !important;
-            color: #1e3a8a !important;
+        /* Hide scrollbar when modal is open */
+        body.modal-open {
+            overflow: hidden;
         }
         
-        .scrolled-login-btn:hover {
-            background-color: #1e3a8a !important;
-            color: white !important;
+        /* Custom scrollbar for gallery */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
         }
-
-        /* Custom animation for filter transitions */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
         }
-        .animate-fade-in {
-            animation: fadeIn 0.4s ease-out forwards;
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Bar: Fixed at the very top -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 flex items-center justify-between">
-        
-        <!-- Left Side: Logo and Society Name -->
-        <a href="index.html" class="flex items-center gap-6 cursor-pointer hover:opacity-90 transition-opacity">
-            <img id="nav-logo" class="object-cover rounded-full shadow-2xl border-2 border-white/20" src="https://placehold.co/400x400/1e3a8a/ffffff?text=Crest" alt="Society Crest">
-            <div class="flex flex-col">
-                <span id="nav-title" class="font-serif font-bold tracking-wide drop-shadow-lg">CivilEPOCH</span>
-                <span id="nav-subtitle" class="text-white/80 text-sm tracking-widest uppercase font-medium transition-opacity duration-300">Department of Civil Engineering</span>
-            </div>
+    <!-- Navigation Bar -->
+    <nav class="w-full z-50 flex items-center justify-between bg-white shadow-md py-3 px-6 md:px-12 sticky top-0">
+        <a href="index.html" class="flex items-center gap-4 cursor-pointer group">
+            <img class="w-14 h-14 object-cover rounded-full shadow-md border border-slate-200 group-hover:border-amber-500 transition-colors" src="https://placehold.co/400x400/1e3a8a/ffffff?text=Crest" alt="Society Crest">
+            <span class="font-serif font-bold text-2xl text-slate-900 group-hover:text-amber-600 transition-colors">CivilEPOCH</span>
         </a>
 
-        <!-- Right Side: Navigation Links & Actions -->
         <div class="hidden lg:flex items-center gap-8">
-            <a href="index.html#about" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">About Us</a>
-            <a href="index.html#events" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">Events</a>
-            <a href="members.html" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">Members</a>
-            <!-- Highlighted Alumni Link -->
-            <a href="alumni.html" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform border-b-2 border-amber-500 pb-1">Alumni</a>
-            <a href="index.html#contact" class="nav-link font-medium uppercase tracking-wider text-sm hover:-translate-y-0.5 transform transition-transform">Contact Us</a>
+            <a href="index.html#about" class="font-medium uppercase tracking-wider text-sm text-slate-600 hover:text-amber-600 transition-colors">About Us</a>
+            <a href="index.html#showcase" class="font-medium uppercase tracking-wider text-sm text-slate-600 hover:text-amber-600 transition-colors">Showcase</a>
+            <a href="events.html" class="font-bold uppercase tracking-wider text-sm text-amber-600 transition-colors">Events</a>
+            <a href="members.html" class="font-medium uppercase tracking-wider text-sm text-slate-600 hover:text-amber-600 transition-colors">Members</a>
+            <a href="alumni.html" class="font-medium uppercase tracking-wider text-sm text-slate-600 hover:text-amber-600 transition-colors">Alumni</a>
+            <a href="index.html#leadership" class="font-medium uppercase tracking-wider text-sm text-slate-600 hover:text-amber-600 transition-colors">Leadership</a>
+            <a href="index.html#contact" class="font-medium uppercase tracking-wider text-sm text-slate-600 hover:text-amber-600 transition-colors">Contact</a>
             
-            <a href="admin.html" id="nav-login" class="login-btn nav-link px-8 py-2.5 rounded-full font-bold uppercase tracking-wider text-sm backdrop-blur-sm hover:bg-white hover:text-gray-900 transition-all duration-300">
+            <a href="admin.html" class="border-2 border-slate-900 text-slate-900 px-8 py-2.5 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-slate-900 hover:text-white transition-all duration-300">
                 Admin Login
             </a>
         </div>
     </nav>
 
-    <!-- Hero Section (Sub-page format: Shorter height) -->
-    <header class="relative w-full h-[55vh] min-h-[400px] overflow-hidden flex items-center justify-center">
-        <!-- Background Image -->
-        <div class="absolute inset-0 bg-slate-900 z-0">
-            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Alumni Background" class="w-full h-full object-cover opacity-30">
+    <!-- Page Header -->
+    <header class="bg-slate-900 py-24 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Background" class="w-full h-full object-cover">
         </div>
-        
-        <!-- Dark Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-50 via-slate-900/60 to-slate-900/80 z-10"></div>
-        
-        <!-- Hero Content -->
-        <div class="relative z-20 text-center px-4 mt-20">
-            <span class="inline-block py-1 px-4 border border-amber-500/50 bg-amber-500/10 text-amber-400 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-widest mb-4">
-                Our Legacy
-            </span>
-            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white tracking-tight mb-4 drop-shadow-2xl">
-                Alumni Network
-            </h1>
-            <p class="text-lg md:text-xl text-slate-300 font-light max-w-2xl mx-auto">
-                Celebrating the trailblazers who built our foundation and are now shaping skylines across the globe.
-            </p>
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center">
+            <h1 class="text-amber-500 text-sm font-bold uppercase tracking-widest mb-3">CivilEPOCH Calendar</h1>
+            <h2 class="text-5xl md:text-6xl font-serif font-bold text-white drop-shadow-lg">Society Events</h2>
         </div>
     </header>
 
-    <!-- Filter Section (Sticky) -->
-    <section class="sticky top-[80px] z-40 bg-slate-50/90 backdrop-blur-md border-b border-slate-200 py-4 shadow-sm">
+    <section id="upcoming-section" class="py-16 bg-[#f8f9fc] relative">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="flex flex-wrap justify-center gap-3" id="filter-container">
-                <button class="filter-btn active bg-slate-900 text-white border border-slate-900 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all" data-filter="all">All Alumni</button>
-                <button class="filter-btn bg-white text-slate-600 border border-slate-300 hover:border-slate-500 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all" data-filter="2025">Class of 2025</button>
-                <button class="filter-btn bg-white text-slate-600 border border-slate-300 hover:border-slate-500 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all" data-filter="2024">Class of 2024</button>
-                <button class="filter-btn bg-white text-slate-600 border border-slate-300 hover:border-slate-500 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all" data-filter="2023">Class of 2023</button>
-                <button class="filter-btn bg-white text-slate-600 border border-slate-300 hover:border-slate-500 px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all" data-filter="legacy">Legacy (Pre-2023)</button>
+            
+            <!-- Filters matching the reference image -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12 border-b border-slate-200 pb-12" id="filter-container">
+                <button data-filter="all" class="filter-btn bg-[#0f172a] text-white px-6 py-2.5 rounded-full font-bold text-[13px] tracking-wide shadow-md">ALL EVENTS</button>
+                <button data-filter="upcoming" class="filter-btn bg-white border border-slate-200 text-slate-600 px-6 py-2.5 rounded-full font-bold text-[13px] tracking-wide hover:bg-slate-50 transition-colors shadow-sm">UPCOMING</button>
+                <button data-filter="past" class="filter-btn bg-white border border-slate-200 text-slate-600 px-6 py-2.5 rounded-full font-bold text-[13px] tracking-wide hover:bg-slate-50 transition-colors shadow-sm">PAST EVENTS</button>
+                <button data-filter="workshop" class="filter-btn bg-white border border-slate-200 text-slate-600 px-6 py-2.5 rounded-full font-bold text-[13px] tracking-wide hover:bg-slate-50 transition-colors shadow-sm">WORKSHOPS</button>
+                <button data-filter="competition" class="filter-btn bg-white border border-slate-200 text-slate-600 px-6 py-2.5 rounded-full font-bold text-[13px] tracking-wide hover:bg-slate-50 transition-colors shadow-sm">COMPETITIONS</button>
+            </div>
+            
+            <!-- Upcoming Header Block -->
+            <div id="upcoming-header-wrapper" class="border-b border-slate-200 pb-4 mb-10 flex items-center gap-4">
+                <h3 class="text-3xl font-serif font-bold text-[#0f172a]">Upcoming Events</h3>
+                <span class="bg-green-100 text-green-700 text-[10px] font-bold px-3 py-1.5 rounded uppercase tracking-widest mt-1 animate-pulse">REGISTRATION OPEN</span>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="upcoming-grid">
+                
+                <!-- Event Card 1 (Upcoming matching image 1) -->
+                <div class="event-item upcoming workshop bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col sm:flex-row group border border-slate-100">
+                    <!-- Left Side: Image with dark overlay & date -->
+                    <div class="relative sm:w-2/5 min-h-[250px] shrink-0">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-slate-900/70 group-hover:bg-slate-900/60 transition-colors duration-300"></div>
+                        <div class="absolute inset-0 flex flex-col justify-center items-center text-white p-4">
+                            <span class="text-[#f59e0b] font-bold uppercase tracking-widest text-sm mb-1">JULY</span>
+                            <span class="text-6xl font-serif font-bold tracking-tight">15</span>
+                            <span class="text-sm font-medium mt-1 tracking-wider">2026</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Side: Content -->
+                    <div class="p-8 sm:w-3/5 flex flex-col relative">
+                        <!-- Badge -->
+                        <div class="absolute top-6 right-6 bg-[#f1f5f9] text-[#475569] text-[10px] font-bold px-3 py-1.5 rounded uppercase tracking-widest">WORKSHOP</div>
+                        
+                        <h4 class="text-2xl font-serif font-bold text-slate-900 mb-3 pr-16 leading-tight">BIM & Revit<br>Masterclass</h4>
+                        <p class="text-slate-500 text-[13px] mb-6 leading-relaxed">Learn advanced 3D structural modeling techniques directly from industry experts. Certification provided upon completion. Limited seats available.</p>
+                        
+                        <div class="space-y-2 mb-8 mt-auto">
+                            <div class="flex items-center gap-3 text-slate-500 text-[13px] font-medium">
+                                <svg class="w-4 h-4 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                10:00 AM - 04:00 PM
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-500 text-[13px] font-medium">
+                                <svg class="w-4 h-4 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                Main Auditorium, CE Block
+                            </div>
+                        </div>
+                        
+                        <!-- Register Button -->
+                        <button class="w-full bg-[#0f172a] text-white font-bold uppercase tracking-wider text-[13px] py-3.5 rounded-lg hover:bg-slate-800 transition-colors shadow-md">
+                            REGISTER NOW (₹200)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Event Card 2 (Upcoming matching image 1) -->
+                <div class="event-item upcoming competition bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col sm:flex-row group border border-slate-100">
+                    <!-- Left Side: Image with dark overlay & date -->
+                    <div class="relative sm:w-2/5 min-h-[250px] shrink-0">
+                        <img src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-slate-900/70 group-hover:bg-slate-900/60 transition-colors duration-300"></div>
+                        <div class="absolute inset-0 flex flex-col justify-center items-center text-white p-4">
+                            <span class="text-[#f59e0b] font-bold uppercase tracking-widest text-sm mb-1">AUG</span>
+                            <span class="text-6xl font-serif font-bold tracking-tight">02</span>
+                            <span class="text-sm font-medium mt-1 tracking-wider">2026</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Side: Content -->
+                    <div class="p-8 sm:w-3/5 flex flex-col relative">
+                        <!-- Badge -->
+                        <div class="absolute top-6 right-6 bg-[#f1f5f9] text-[#475569] text-[10px] font-bold px-3 py-1.5 rounded uppercase tracking-widest">COMPETITION</div>
+                        
+                        <h4 class="text-2xl font-serif font-bold text-slate-900 mb-3 pr-20 leading-tight">CONSTRUX: Bridge<br>Design</h4>
+                        <p class="text-slate-500 text-[13px] mb-6 leading-relaxed">Our flagship annual structural design challenge. Form teams of 4, design, and physically build the strongest popsicle stick truss bridge.</p>
+                        
+                        <div class="space-y-2 mb-8 mt-auto">
+                            <div class="flex items-center gap-3 text-slate-500 text-[13px] font-medium">
+                                <svg class="w-4 h-4 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                09:00 AM - 05:00 PM
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-500 text-[13px] font-medium">
+                                <svg class="w-4 h-4 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                Civil Engineering Courtyard
+                            </div>
+                        </div>
+                        
+                        <!-- Register Button -->
+                        <button class="w-full bg-[#0f172a] text-white font-bold uppercase tracking-wider text-[13px] py-3.5 rounded-lg hover:bg-slate-800 transition-colors shadow-md">
+                            REGISTER TEAM (₹500)
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Alumni Directory -->
-    <main class="py-16 max-w-7xl mx-auto px-6 lg:px-12 min-h-screen relative z-10">
-        
-        <!-- Class of 2025 Section -->
-        <div class="hierarchy-section mb-20" data-session-group="2025">
-            <div class="flex items-center gap-4 mb-10 border-b-2 border-slate-200 pb-3">
-                <h2 class="text-3xl font-serif font-bold text-slate-900">Class of 2025</h2>
-                <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">Recent Grads</span>
-            </div>
+    <!-- Past Events Section -->
+    <section id="past-section" class="py-16 bg-white relative pb-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Alumni Card -->
-                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2025">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '21-'25</div>
-                    </div>
-                    <div class="p-6 relative">
-                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Sneha Kapoor</h3>
-                        <p class="text-sm text-slate-500 mb-4 font-medium">BIM Coordinator</p>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-amber-600 font-bold text-sm tracking-wide">Tata Projects</span>
-                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <!-- Concluded Header Block -->
+            <div class="border-b border-slate-200 pb-4 mb-10 flex items-center gap-4">
+                <h3 class="text-3xl font-serif font-bold text-[#0f172a]">Past Events</h3>
+                <span class="bg-[#e2e8f0] text-[#475569] text-[10px] font-bold px-3 py-1.5 rounded uppercase tracking-widest mt-1">CONCLUDED</span>
+            </div>
 
-                <!-- Alumni Card -->
-                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2025">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '21-'25</div>
-                    </div>
-                    <div class="p-6 relative">
-                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Arjun Mehta</h3>
-                        <p class="text-sm text-slate-500 mb-4 font-medium">Graduate Engineer Trainee</p>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-amber-600 font-bold text-sm tracking-wide">L&T Construction</span>
-                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Alumni Card -->
-                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2025">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '21-'25</div>
-                    </div>
-                    <div class="p-6 relative">
-                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Ananya Das</h3>
-                        <p class="text-sm text-slate-500 mb-4 font-medium">Urban Planner</p>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-amber-600 font-bold text-sm tracking-wide">Govt. of Bihar</span>
-                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="past-grid">
                 
-                <!-- Alumni Card -->
-                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2025">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '21-'25</div>
-                    </div>
-                    <div class="p-6 relative">
-                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Rahul Verma</h3>
-                        <p class="text-sm text-slate-500 mb-4 font-medium">Site Engineer</p>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-amber-600 font-bold text-sm tracking-wide">Shapoorji Pallonji</span>
-                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
+                <!-- Past Event Card 1 (Gallery Style) -->
+                <div class="event-item past workshop bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] overflow-hidden flex flex-col sm:flex-row group border border-slate-100">
+                    <!-- Left Side: Image with dark overlay & date -->
+                    <div class="relative sm:w-2/5 min-h-[250px] shrink-0">
+                        <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="absolute inset-0 w-full h-full object-cover grayscale">
+                        <div class="absolute inset-0 bg-slate-600/80 transition-colors duration-300"></div>
+                        <div class="absolute inset-0 flex flex-col justify-center items-center text-white p-4">
+                            <span class="text-slate-200 font-bold uppercase tracking-widest text-sm mb-1">MAR</span>
+                            <span class="text-6xl font-serif font-bold tracking-tight text-white">10</span>
+                            <span class="text-sm font-medium mt-1 tracking-wider text-slate-200">2026</span>
                         </div>
                     </div>
+                    
+                    <!-- Right Side: Content -->
+                    <div class="p-8 sm:w-3/5 flex flex-col relative bg-white">
+                        <!-- Badge -->
+                        <div class="absolute top-6 right-6 bg-[#f1f5f9] text-[#475569] text-[10px] font-bold px-3 py-1.5 rounded uppercase tracking-widest">WORKSHOP</div>
+                        
+                        <h4 class="text-2xl font-serif font-bold text-slate-900 mb-3 pr-16 leading-tight">Industrial Site Visit<br>'26</h4>
+                        <p class="text-slate-500 text-[13px] mb-6 leading-relaxed">A massive success where 120+ students visited the ongoing metro tunnel construction site to understand real-world geotechnical challenges.</p>
+                        
+                        <div class="flex items-center gap-3 text-slate-500 text-[13px] font-medium mb-8 mt-auto">
+                            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            Patna Metro Phase-1 Site
+                        </div>
+                        
+                        <!-- Light Gallery Button -->
+                        <button onclick="openGallery('survey-camp')" class="w-full bg-[#f8fafc] border border-[#e2e8f0] text-[#334155] font-bold uppercase tracking-wider text-[13px] py-3.5 rounded-lg hover:bg-slate-100 transition-colors">
+                            VIEW IMAGE GALLERY
+                        </button>
+                    </div>
                 </div>
+
+                <!-- Past Event Card 2 (Result Style) -->
+                <div class="event-item past competition bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] overflow-hidden flex flex-col sm:flex-row group border border-slate-100">
+                    <!-- Left Side: Image with dark overlay & date -->
+                    <div class="relative sm:w-2/5 min-h-[250px] shrink-0">
+                        <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="absolute inset-0 w-full h-full object-cover grayscale">
+                        <div class="absolute inset-0 bg-slate-700/80 transition-colors duration-300"></div>
+                        <div class="absolute inset-0 flex flex-col justify-center items-center text-white p-4">
+                            <span class="text-slate-200 font-bold uppercase tracking-widest text-sm mb-1">FEB</span>
+                            <span class="text-6xl font-serif font-bold tracking-tight text-white">15</span>
+                            <span class="text-sm font-medium mt-1 tracking-wider text-slate-200">2026</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Side: Content -->
+                    <div class="p-8 sm:w-3/5 flex flex-col relative bg-white">
+                        <!-- Badge -->
+                        <div class="absolute top-6 right-6 bg-[#f1f5f9] text-[#475569] text-[10px] font-bold px-3 py-1.5 rounded uppercase tracking-widest">COMPETITION</div>
+                        
+                        <h4 class="text-2xl font-serif font-bold text-slate-900 mb-3 pr-20 leading-tight">AutoCAD Design<br>Marathon</h4>
+                        <p class="text-slate-500 text-[13px] mb-6 leading-relaxed">Participants engaged in a grueling 8-hour drafting hackathon. Congratulations to Team Structura for winning the 1st prize!</p>
+                        
+                        <div class="flex items-center gap-3 text-slate-500 text-[13px] font-medium mb-8 mt-auto">
+                            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            Computer Lab 1 & 2
+                        </div>
+                        
+                        <!-- Light Result Button -->
+                        <button onclick="openResult('cad-marathon')" class="w-full bg-[#f8fafc] border border-[#e2e8f0] text-[#334155] font-bold uppercase tracking-wider text-[13px] py-3.5 rounded-lg hover:bg-slate-100 transition-colors">
+                            VIEW RESULTS
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
-
-        <!-- Class of 2024 Section -->
-        <div class="hierarchy-section mb-20" data-session-group="2024">
-            <div class="flex items-center gap-4 mb-10 border-b-2 border-slate-200 pb-3">
-                <h2 class="text-3xl font-serif font-bold text-slate-900">Class of 2024</h2>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Alumni Card -->
-                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2024">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '20-'24</div>
-                    </div>
-                    <div class="p-6 relative">
-                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Rohan Sharma</h3>
-                        <p class="text-sm text-slate-500 mb-4 font-medium">Structural Designer</p>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-amber-600 font-bold text-sm tracking-wide">Arup Group</span>
-                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Alumni Card -->
-                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2024">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '20-'24</div>
-                    </div>
-                    <div class="p-6 relative">
-                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Aditi Singh</h3>
-                        <p class="text-sm text-slate-500 mb-4 font-medium">Project Engineer</p>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-amber-600 font-bold text-sm tracking-wide">JMC Projects</span>
-                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Alumni Card -->
-                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2024">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '20-'24</div>
-                    </div>
-                    <div class="p-6 relative">
-                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Vikram Rao</h3>
-                        <p class="text-sm text-slate-500 mb-4 font-medium">M.Tech Scholar</p>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-amber-600 font-bold text-sm tracking-wide">IIT Delhi</span>
-                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Alumni Card -->
-                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2024">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '20-'24</div>
-                    </div>
-                    <div class="p-6 relative">
-                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Priya Desai</h3>
-                        <p class="text-sm text-slate-500 mb-4 font-medium">Geotech Consultant</p>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-amber-600 font-bold text-sm tracking-wide">AECOM</span>
-                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Class of 2023 Section -->
-        <div class="hierarchy-section mb-20" data-session-group="2023">
-            <div class="flex items-center gap-4 mb-10 border-b-2 border-slate-200 pb-3">
-                <h2 class="text-3xl font-serif font-bold text-slate-900">Class of 2023</h2>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Alumni Card -->
-                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2023">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '19-'23</div>
-                    </div>
-                    <div class="p-6 relative">
-                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Neeraj Kumar</h3>
-                        <p class="text-sm text-slate-500 mb-4 font-medium">Assistant Manager</p>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-amber-600 font-bold text-sm tracking-wide">DLF India</span>
-                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Alumni Card -->
-                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="2023">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1bfa82?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-slate-900 text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '19-'23</div>
-                    </div>
-                    <div class="p-6 relative">
-                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Megha Sen</h3>
-                        <p class="text-sm text-slate-500 mb-4 font-medium">Design Engineer</p>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-amber-600 font-bold text-sm tracking-wide">WSP Global</span>
-                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Legacy Section (Pre-2023) -->
-        <div class="hierarchy-section mb-16" data-session-group="legacy">
-            <div class="flex items-center gap-4 mb-10 border-b-2 border-slate-200 pb-3">
-                <h2 class="text-3xl font-serif font-bold text-slate-900">Legacy Network</h2>
-                <span class="bg-slate-200 text-slate-600 text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider">Pre-2023</span>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Alumni Card -->
-                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="legacy">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-4 right-4 bg-slate-900/90 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '18-'22</div>
-                    </div>
-                    <div class="p-6 relative">
-                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Rajiv Singh</h3>
-                        <p class="text-sm text-slate-500 mb-4 font-medium">Senior Project Manager</p>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-amber-600 font-bold text-sm tracking-wide">Afcons Infra</span>
-                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Alumni Card -->
-                <div class="alumni-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300" data-session="legacy">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Alumni" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-4 right-4 bg-slate-900/90 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded shadow-sm uppercase tracking-wider">Session '17-'21</div>
-                    </div>
-                    <div class="p-6 relative">
-                        <h3 class="text-xl font-serif font-bold text-slate-900 mb-1">Sara Ali</h3>
-                        <p class="text-sm text-slate-500 mb-4 font-medium">Founder & Principal Arch.</p>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-amber-600 font-bold text-sm tracking-wide">Studio DesignX</span>
-                            <a href="#" class="text-slate-400 hover:text-[#0077b5] transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Empty State Message -->
-        <div id="empty-state" class="hidden text-center py-20">
-            <svg class="w-16 h-16 text-slate-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-            <h3 class="text-xl font-serif font-bold text-slate-500">No alumni records found for this class year.</h3>
-        </div>
-
-    </main>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-black py-8 border-t border-slate-800 text-center relative z-50">
+    <footer class="bg-black py-8 border-t border-slate-800 text-center">
         <p class="text-slate-400 text-sm tracking-wide">
             &copy; 2026 CivilEPOCH Society. All Rights Reserved. | Designed with ❤️ in Patna, Bihar.
         </p>
     </footer>
 
-    <!-- Javascript for Nav Scroll and Filtering -->
+    <!-- Modal 1: Image Gallery Grid (Intermediate View) -->
+    <div id="gallery-modal" class="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 md:p-10 opacity-0 transition-opacity duration-300">
+        <div id="gallery-content" class="bg-white rounded-2xl shadow-2xl w-full max-w-5xl max-h-[90vh] flex flex-col transform scale-95 transition-transform duration-300">
+            <!-- Header -->
+            <div class="flex justify-between items-center p-6 border-b border-slate-200 shrink-0">
+                <div>
+                    <h3 id="gallery-title" class="text-2xl font-serif font-bold text-slate-900">Event Name</h3>
+                    <p class="text-sm text-slate-500 mt-1">Select an image to expand</p>
+                </div>
+                <button onclick="closeGallery()" class="text-slate-400 hover:text-red-500 bg-slate-100 hover:bg-red-50 p-2.5 rounded-full transition-colors border border-slate-200">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <!-- Grid Container with max-height to force scroller -->
+            <div class="p-6 overflow-y-auto flex-1 custom-scrollbar max-h-[60vh]">
+                <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- Thumbnails injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Fullscreen Lightbox (For Single Image & Gallery Viewing) -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden items-center justify-center opacity-0 transition-opacity duration-300">
+        
+        <!-- Close Button (Always visible) -->
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 md:top-8 md:right-8 text-white hover:text-amber-500 transition-colors z-[110] bg-black/50 p-3 rounded-full backdrop-blur-md">
+            <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+
+        <!-- Left Arrow (Hidden if single image) -->
+        <button id="lightbox-prev" onclick="prevLightboxImage(event)" class="absolute left-4 md:left-10 text-white hover:text-amber-500 transition-colors z-[110] bg-black/50 p-3 rounded-full backdrop-blur-md">
+            <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+
+        <!-- Main Image -->
+        <div class="relative w-full h-full flex items-center justify-center px-12 md:px-24 py-12">
+            <img id="lightbox-img" src="" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-transform duration-300 transform scale-95" alt="Enlarged View">
+        </div>
+
+        <!-- Right Arrow (Hidden if single image) -->
+        <button id="lightbox-next" onclick="nextLightboxImage(event)" class="absolute right-4 md:right-10 text-white hover:text-amber-500 transition-colors z-[110] bg-black/50 p-3 rounded-full backdrop-blur-md">
+            <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+        
+        <!-- Indicator text (e.g., 1 / 5) -->
+        <div id="lightbox-counter" class="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white/80 text-sm font-bold tracking-widest bg-black/50 px-5 py-2 rounded-full backdrop-blur-md">
+            1 / 1
+        </div>
+    </div>
+
+    <!-- Scripts & Data Management -->
     <script>
-        // 1. Navigation Scroll Magic 
-        const navbar = document.getElementById('navbar');
-        const navLogo = document.getElementById('nav-logo');
-        const navTitle = document.getElementById('nav-title');
-        const navSubtitle = document.getElementById('nav-subtitle');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const navLogin = document.getElementById('nav-login');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled-nav');
-                navLogo.classList.add('scrolled-logo');
-                navTitle.classList.add('scrolled-title');
-                navSubtitle.classList.add('opacity-0', 'hidden');
-                
-                navLinks.forEach(link => {
-                    if (link.id !== 'nav-login') {
-                        link.classList.add('scrolled-link');
-                    }
-                });
-
-                navLogin.classList.add('scrolled-login-btn');
-                navLogin.classList.remove('hover:bg-white', 'hover:text-gray-900');
-            } else {
-                navbar.classList.remove('scrolled-nav');
-                navLogo.classList.remove('scrolled-logo');
-                navTitle.classList.remove('scrolled-title');
-                navSubtitle.classList.remove('opacity-0', 'hidden');
-                
-                navLinks.forEach(link => {
-                    if (link.id !== 'nav-login') {
-                        link.classList.remove('scrolled-link');
-                    }
-                });
-
-                navLogin.classList.remove('scrolled-login-btn');
-                navLogin.classList.add('hover:bg-white', 'hover:text-gray-900');
+        // 1. Mock Database for Events (Expanded arrays to create rows and force scrolling)
+        const eventsDB = {
+            'cad-marathon': {
+                title: 'AutoCAD Design Marathon',
+                gallery: [
+                    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1541888086425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    // Added duplicates to demonstrate scrolling with multiple rows
+                    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1541888086425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+                ],
+                result: 'https://placehold.co/800x1200/1e3a8a/ffffff?text=AutoCAD+Marathon+Results\n\n1st:+Team+Structura\n2nd:+Drafting+Kings'
+            },
+            'survey-camp': {
+                title: 'Industrial Site Visit \'26',
+                gallery: [
+                    'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    // Added duplicates to demonstrate scrolling with multiple rows
+                    'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+                ],
+                result: 'https://placehold.co/800x1200/d97706/ffffff?text=Site+Visit+Report'
             }
-        });
+        };
 
-        // 2. Session Filtering Logic & Smooth Scrolling
+        // 2. DOM Elements
+        const galleryModal = document.getElementById('gallery-modal');
+        const galleryContent = document.getElementById('gallery-content');
+        const galleryTitle = document.getElementById('gallery-title');
+        const galleryGrid = document.getElementById('gallery-grid');
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const prevBtn = document.getElementById('lightbox-prev');
+        const nextBtn = document.getElementById('lightbox-next');
+        const counter = document.getElementById('lightbox-counter');
+
+        // 3. State Variables
+        let currentImagesArray = [];
+        let currentIndex = 0;
+
+        // 4. Open the Intermediate Gallery Modal
+        function openGallery(eventId) {
+            const event = eventsDB[eventId];
+            if (!event || !event.gallery) return;
+
+            galleryTitle.textContent = event.title + " Gallery";
+            galleryGrid.innerHTML = ''; // Clear previous images
+
+            // Populate Grid
+            event.gallery.forEach((url, idx) => {
+                const imgWrap = document.createElement('div');
+                imgWrap.className = 'cursor-pointer group relative overflow-hidden rounded-xl bg-slate-100 aspect-square border border-slate-200 shadow-sm';
+                
+                const img = document.createElement('img');
+                img.src = url;
+                img.className = 'w-full h-full object-cover group-hover:scale-110 transition-transform duration-500';
+                
+                const overlay = document.createElement('div');
+                overlay.className = 'absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center';
+                overlay.innerHTML = '<svg class="w-10 h-10 text-white opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:scale-100 scale-75 duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>';
+
+                imgWrap.appendChild(img);
+                imgWrap.appendChild(overlay);
+                
+                // Clicking a thumbnail opens the full lightbox
+                imgWrap.onclick = () => {
+                    openLightbox(event.gallery, idx);
+                };
+
+                galleryGrid.appendChild(imgWrap);
+            });
+
+            document.body.classList.add('modal-open');
+            galleryModal.classList.remove('hidden');
+            galleryModal.style.display = 'flex';
+            setTimeout(() => {
+                galleryModal.classList.remove('opacity-0');
+                galleryContent.classList.remove('scale-95');
+            }, 10);
+        }
+
+        function closeGallery() {
+            galleryModal.classList.add('opacity-0');
+            galleryContent.classList.add('scale-95');
+            setTimeout(() => {
+                galleryModal.classList.add('hidden');
+                galleryModal.style.display = 'none';
+                if(lightbox.classList.contains('hidden')) {
+                    document.body.classList.remove('modal-open');
+                }
+            }, 300);
+        }
+
+        // 5. Open View Results (Bypasses gallery, opens Lightbox directly with 1 image)
+        function openResult(eventId) {
+            const event = eventsDB[eventId];
+            if (!event || !event.result) return;
+            // Pass the result URL as a single-element array to automatically hide left/right arrows
+            openLightbox([event.result], 0);
+        }
+
+        // 6. Lightbox Core Logic
+        function openLightbox(imagesArray, startingIndex) {
+            currentImagesArray = imagesArray;
+            currentIndex = startingIndex;
+            
+            updateLightboxUI();
+
+            document.body.classList.add('modal-open');
+            lightbox.classList.remove('hidden');
+            lightbox.style.display = 'flex';
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+                lightboxImg.classList.remove('scale-95');
+            }, 10);
+        }
+
+        function updateLightboxUI() {
+            lightboxImg.src = currentImagesArray[currentIndex];
+            counter.textContent = `${currentIndex + 1} / ${currentImagesArray.length}`;
+
+            // Hide arrows and counter if only one image exists (e.g., Result image)
+            if (currentImagesArray.length <= 1) {
+                prevBtn.classList.add('hidden');
+                nextBtn.classList.add('hidden');
+                counter.classList.add('hidden');
+            } else {
+                prevBtn.classList.remove('hidden');
+                nextBtn.classList.remove('hidden');
+                counter.classList.remove('hidden');
+            }
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0');
+            lightboxImg.classList.add('scale-95');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightbox.style.display = 'none';
+                
+                // Only remove modal-open from body if gallery is ALSO closed
+                if(galleryModal.classList.contains('hidden')) {
+                    document.body.classList.remove('modal-open');
+                }
+            }, 300);
+        }
+
+        function prevLightboxImage(e) {
+            if(e) e.stopPropagation();
+            if (currentImagesArray.length <= 1) return;
+            currentIndex = (currentIndex - 1 + currentImagesArray.length) % currentImagesArray.length;
+            updateLightboxUI();
+        }
+
+        function nextLightboxImage(e) {
+            if(e) e.stopPropagation();
+            if (currentImagesArray.length <= 1) return;
+            currentIndex = (currentIndex + 1) % currentImagesArray.length;
+            updateLightboxUI();
+        }
+
+        // 8. Filters Logic
         const filterBtns = document.querySelectorAll('.filter-btn');
-        const alumniCards = document.querySelectorAll('.alumni-card');
-        const hierarchySections = document.querySelectorAll('.hierarchy-section');
-        const emptyState = document.getElementById('empty-state');
-        const mainContainer = document.querySelector('main');
+        const eventItems = document.querySelectorAll('.event-item');
+        const upcomingSection = document.getElementById('upcoming-section');
+        const pastSection = document.getElementById('past-section');
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remove active class from all
+                // Reset all buttons
                 filterBtns.forEach(b => {
-                    b.classList.remove('bg-slate-900', 'text-white', 'active');
-                    b.classList.add('bg-white', 'text-slate-600');
+                    b.className = 'filter-btn bg-white border border-slate-200 text-slate-600 px-6 py-2.5 rounded-full font-bold text-[13px] tracking-wide hover:bg-slate-50 transition-colors shadow-sm';
                 });
-                
-                // Add active class to clicked
-                btn.classList.remove('bg-white', 'text-slate-600');
-                btn.classList.add('bg-slate-900', 'text-white', 'active');
+                // Highlight clicked button
+                btn.className = 'filter-btn bg-[#0f172a] text-white px-6 py-2.5 rounded-full font-bold text-[13px] tracking-wide shadow-md active-filter';
 
                 const filterValue = btn.getAttribute('data-filter');
-                let totalVisible = 0;
+                let upcomingVisible = 0;
+                let pastVisible = 0;
 
-                // Filter cards
-                alumniCards.forEach(card => {
-                    // Reset animation
-                    card.classList.remove('animate-fade-in');
-                    
-                    if (filterValue === 'all' || card.getAttribute('data-session') === filterValue) {
-                        card.style.display = '';
-                        // Trigger reflow to restart animation
-                        void card.offsetWidth; 
-                        card.classList.add('animate-fade-in');
-                        totalVisible++;
+                eventItems.forEach(item => {
+                    // Check if item matches the filter or if filter is 'all'
+                    if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                        item.classList.remove('hidden'); // Show item
+                        if (item.classList.contains('upcoming')) upcomingVisible++;
+                        if (item.classList.contains('past')) pastVisible++;
                     } else {
-                        card.style.display = 'none';
+                        item.classList.add('hidden'); // Hide item
                     }
                 });
 
-                // Hide empty hierarchy sections
-                hierarchySections.forEach(section => {
-                    // Check if this specific section group matches the filter, OR if filter is "all"
-                    const sectionGroup = section.getAttribute('data-session-group');
-                    
-                    if (filterValue === 'all' || sectionGroup === filterValue) {
-                        section.style.display = '';
-                    } else {
-                        section.style.display = 'none';
-                    }
-                });
-
-                // Show empty state message if no members match at all
-                if (totalVisible === 0) {
-                    emptyState.classList.remove('hidden');
-                } else {
-                    emptyState.classList.add('hidden');
-                }
-
-                // Smoothly scroll to the top of the main directory section accurately
-                const headerOffset = 160; // Approximate height of the fixed navbar + sticky filter bar combined
-                const elementPosition = mainContainer.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+                // Hide content blocks but keep the filter menu visible
+                const upcomingHeaderWrapper = document.getElementById('upcoming-header-wrapper');
+                const upcomingGrid = document.getElementById('upcoming-grid');
+                
+                if (upcomingHeaderWrapper) upcomingHeaderWrapper.style.display = upcomingVisible > 0 ? 'flex' : 'none';
+                if (upcomingGrid) upcomingGrid.style.display = upcomingVisible > 0 ? 'grid' : 'none';
+                
+                pastSection.style.display = pastVisible > 0 ? 'block' : 'none';
             });
+        });
+
+        // 9. Event Listeners for closing via background click or Escape key
+        galleryModal.addEventListener('click', (e) => {
+            if (e.target === galleryModal) closeGallery();
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') prevLightboxImage();
+                if (e.key === 'ArrowRight') nextLightboxImage();
+            } else if (!galleryModal.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeGallery();
+            }
         });
     </script>
 </body>
