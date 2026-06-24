@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal | CivilEPOCH</title>
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Custom Input Styles for Autofill */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active{
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #fff;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex text-slate-900">
+
+    <div class="flex w-full min-h-screen">
+        
+        <!-- Left Side: Login Form Container -->
+        <div class="w-full lg:w-1/2 flex flex-col justify-center px-6 sm:px-12 md:px-24 xl:px-32 relative bg-white z-10 shadow-[20px_0_40px_rgba(0,0,0,0.05)]">
+            
+            <!-- Back to Home Link -->
+            <a href="index.html" class="absolute top-8 left-6 sm:left-12 flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-amber-600 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Return to Homepage
+            </a>
+
+            <div class="max-w-md w-full mx-auto mt-12 lg:mt-0">
+                
+                <!-- Logo & Header -->
+                <div class="text-center sm:text-left mb-10">
+                    <div class="inline-flex items-center justify-center sm:justify-start gap-4 mb-6">
+                        <img class="w-12 h-12 object-cover rounded-full shadow-md border border-slate-200" src="https://placehold.co/400x400/1e3a8a/ffffff?text=Crest" alt="Society Crest">
+                        <span class="font-serif font-bold text-2xl text-slate-900 tracking-wide">CivilEPOCH</span>
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-2">Admin Portal</h1>
+                    <p class="text-slate-500 text-sm">Secure access for society board members only.</p>
+                </div>
+
+                <!-- Alert Box (Hidden by default) -->
+                <div id="alert-box" class="hidden mb-6 p-4 rounded-lg text-sm font-medium flex items-start gap-3 transition-all duration-300">
+                    <svg id="alert-icon" class="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"></svg>
+                    <span id="alert-message"></span>
+                </div>
+
+                <!-- Form -->
+                <form id="admin-login-form" class="space-y-6" onsubmit="handleLogin(event)">
+                    
+                    <!-- Email Field -->
+                    <div>
+                        <label for="email" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Admin Email / Username</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            </div>
+                            <input type="text" id="email" name="email" required 
+                                class="block w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all" 
+                                placeholder="president@civilepoch.org">
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label for="password" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Password</label>
+                            <a href="#" class="text-xs font-semibold text-amber-600 hover:text-amber-700 transition-colors">Forgot?</a>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                            </div>
+                            <input type="password" id="password" name="password" required 
+                                class="block w-full pl-11 pr-12 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all" 
+                                placeholder="••••••••">
+                            
+                            <!-- Toggle Password Visibility -->
+                            <button type="button" onclick="togglePassword()" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 transition-colors focus:outline-none">
+                                <svg id="eye-icon" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Remember Me -->
+                    <div class="flex items-center">
+                        <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-amber-500 focus:ring-amber-500 border-slate-300 rounded cursor-pointer accent-amber-500">
+                        <label for="remember-me" class="ml-2 block text-sm text-slate-600 cursor-pointer">
+                            Keep me securely logged in
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="submit-btn" class="w-full flex justify-center items-center bg-slate-900 text-white font-bold uppercase tracking-wider text-sm py-4 rounded-xl hover:bg-slate-800 transition-all shadow-[0_8px_20px_rgb(0,0,0,0.12)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-900">
+                        <span id="btn-text">Authenticate Access</span>
+                    </button>
+                </form>
+
+                <!-- Help Text -->
+                <div class="mt-8 text-center sm:text-left">
+                    <p class="text-xs text-slate-400">
+                        Experiencing login issues? Contact the IT Secretary or the Faculty Advisor for credentials reset.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Visual/Branding (Hidden on Mobile) -->
+        <div class="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-slate-900 items-center justify-center">
+            <!-- Background Image -->
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Civil Engineering Architecture" class="absolute inset-0 w-full h-full object-cover opacity-40">
+            
+            <!-- Dark Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
+            
+            <!-- Content -->
+            <div class="relative z-10 max-w-lg px-12 text-center">
+                <div class="w-20 h-20 mx-auto bg-amber-500/10 rounded-2xl backdrop-blur-sm border border-amber-500/20 flex items-center justify-center mb-8 shadow-2xl">
+                    <svg class="w-10 h-10 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
+                </div>
+                <h2 class="text-3xl font-serif font-bold text-white mb-4 leading-tight">Control Panel & Content Management</h2>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Update society events, manage alumni directories, and upload showcase galleries seamlessly through the CivilEPOCH infrastructure gateway.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Toggle Password Visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eye-icon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>';
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>';
+            }
+        }
+
+        // Handle Form Submission (Simulation)
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const btnText = document.getElementById('btn-text');
+            const submitBtn = document.getElementById('submit-btn');
+            const alertBox = document.getElementById('alert-box');
+            const alertIcon = document.getElementById('alert-icon');
+            const alertMessage = document.getElementById('alert-message');
+
+            // Hide previous alerts
+            alertBox.classList.add('hidden');
+            
+            // UI Loading State
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
+            btnText.innerHTML = '<span class="spinner"></span> Authenticating...';
+
+            // Simulate Network Request
+            setTimeout(() => {
+                
+                // Simple validation check (Simulation)
+                if (email && password.length >= 6) {
+                    // Success State
+                    alertBox.className = 'mb-6 p-4 rounded-lg text-sm font-medium flex items-start gap-3 transition-all duration-300 bg-emerald-50 text-emerald-800 border border-emerald-200';
+                    alertIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>';
+                    alertMessage.textContent = 'Authentication successful. Initializing dashboard environment...';
+                    alertBox.classList.remove('hidden');
+                    
+                    submitBtn.classList.remove('bg-slate-900', 'hover:bg-slate-800');
+                    submitBtn.classList.add('bg-emerald-600', 'hover:bg-emerald-700');
+                    btnText.innerHTML = 'Redirecting...';
+
+                    // Simulate redirect after success
+                    setTimeout(() => {
+                        // In a real app, this would be: window.location.href = 'dashboard.html';
+                        btnText.innerHTML = 'Welcome, Admin';
+                    }, 1500);
+
+                } else {
+                    // Error State
+                    alertBox.className = 'mb-6 p-4 rounded-lg text-sm font-medium flex items-start gap-3 transition-all duration-300 bg-red-50 text-red-800 border border-red-200';
+                    alertIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>';
+                    alertMessage.textContent = 'Access denied. Invalid credentials provided or password too short.';
+                    alertBox.classList.remove('hidden');
+
+                    // Reset Button
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+                    btnText.innerHTML = 'Authenticate Access';
+                }
+                
+            }, 1500); // 1.5 second simulated delay
+        }
+    </script>
+</body>
+</html>
